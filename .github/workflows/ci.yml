@@ -10,10 +10,10 @@ jobs:
         python-version: ["3.14"]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -26,3 +26,13 @@ jobs:
       - name: Analyze with pylint
         run: |
           pylint $(git ls-files '*.py')
+
+      - name:  Check secrets
+        uses: gitleaks/gitleaks-action@v2.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Static Analysis, Bandit
+        run: |
+          pip install bandit
+          bandit -r app.py
