@@ -32,7 +32,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Static Analysis, Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config:
+            p/flask
+
       - name: Static Analysis, Bandit
         run: |
           pip install bandit
           bandit -r .
+
