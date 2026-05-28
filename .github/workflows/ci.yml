@@ -35,4 +35,4 @@ jobs:
       - name: Static Analysis, Bandit
         run: |
           pip install bandit
-          bandit -r app.py
+          bandit -r .
