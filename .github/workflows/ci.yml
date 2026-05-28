@@ -32,6 +32,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Claude Analysis
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run:
+          chmod +x gh_workflow_assets/claude_review.sh
+          ./gh_workflow_assets/claude_review.sh
+
+- name: Check review result
+  run: |
+    cat /tmp/review.txt
+    if [ "$(cat /tmp/review.txt)" != "0" ]; then
+      exit 1
+    fi
+
       - name: Static Analysis, Semgrep
         run: |
           pip install semgrep
