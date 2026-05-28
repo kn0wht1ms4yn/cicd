@@ -2,4 +2,4 @@ This is a simple Flask web application that has been made purposefully vulnerabl
 - XSS
 - SSTI
 - SQLi
-- Command Execution
+- Command Injection
