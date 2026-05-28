@@ -31,7 +31,7 @@ def index():
     session['index'] = True
     return ':)'
 
-@app.get('/hi/<name>')
+@app.get('/hi/<path:name>')
 def route_hi(name):
     '''
         route /hi/<name>
