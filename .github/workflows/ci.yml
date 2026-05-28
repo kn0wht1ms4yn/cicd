@@ -34,16 +34,7 @@ jobs:
 
       - name: Static Analysis, Semgrep
         run: |
-          pip install semgrep
-          cat >  /tmp/ssti.yml << EOF
-          rules:
-            - id: Flask_render_template_string
-              pattern: flask.render_template_string(...)
-              message: Potential SSTI - render_template_string()
-              languages: [python]
-              severity: ERROR
-          EOF
-          semgrep --config p/flask --config /tmp/ssti.yml --error .
+          semgrep --config p/flask --config gh_workflow_assets/semgrep_ssti.yml --error .
 
       - name: Static Analysis, Bandit
         run: |

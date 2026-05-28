@@ -1,0 +1,6 @@
+rules:
+  - id: Flask_render_template_string
+    pattern: flask.render_template_string(...)
+    message: Potential SSTI - render_template_string()
+    languages: [python]
+    severity: ERROR
