@@ -43,7 +43,7 @@ jobs:
               languages: [python]
               severity: ERROR
           EOF
-          semgrep --config p/flask --error .
+          semgrep --config p/flask --connfig /tmp/ssti.yml --error .
 
       - name: Static Analysis, Bandit
         run: |
