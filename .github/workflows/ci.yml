@@ -37,7 +37,7 @@ jobs:
           pip install semgrep
           cat >  /tmp/ssti.yml << EOF
           rules:
-            - id: Flask Rule, render_template_string
+            - id: Flask_render_template_string
               pattern: flask.render_template_string(...)
               message: Potential SSTI - render_template_string()
               languages: [python]
