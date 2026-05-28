@@ -4,7 +4,7 @@
 import flask
 from flask import session
 import subprocess
-from db import db, User, insert_user, get_user
+from db import db, insert_user, get_user
 
 app = flask.Flask(__name__)
 app.secret_key = 'Ohs3athibooteKutoo5quaeyahy4phaW'
