@@ -33,10 +33,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Static Analysis, Semgrep
-        uses: semgrep/semgrep-action@v1
-        with:
-          config:
-            p/flask
+        run: |
+          pip install semgrep
+          semgrep --config p/flask --config p/owasp-top-ten .
 
       - name: Static Analysis, Bandit
         run: |
