@@ -34,6 +34,7 @@ jobs:
 
       - name: Static Analysis, Semgrep
         run: |
+          pip install semgrep
           semgrep --config p/flask --config gh_workflow_assets/semgrep_ssti.yml --error .
 
       - name: Static Analysis, Bandit
