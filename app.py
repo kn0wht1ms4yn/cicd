@@ -1,9 +1,9 @@
 '''
     Simple flask app demonstration.
 '''
+import subprocess
 import flask
 from flask import session
-import subprocess
 from db import db, insert_user, get_user
 
 app = flask.Flask(__name__)
@@ -32,7 +32,7 @@ def index():
     return ':)'
 
 @app.get('/hi/<name>')
-def hi(name):
+def route_hi(name):
     '''
         route /hi/<name>
     '''
@@ -41,7 +41,7 @@ def hi(name):
     return flask.render_template_string(tpl)
 
 @app.get('/status/<port>')
-def status(port):
+def route_status(port):
     '''
         /status/<port>
     '''
@@ -51,13 +51,13 @@ def status(port):
     return r
 
 @app.get('/user/<username>')
-def user(username):
+def route_user(username):
     '''
         route /user/<username>
     '''
     user = get_user(username)
     if user:
-        return f'User found. :)'
+        return 'User found. :)'
     return 'User not found. :('
 
 app.run(host='127.0.0.1', port=9000)

@@ -3,16 +3,15 @@
 '''
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, text
+from sqlalchemy import text
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase): # pylint: disable=too-few-public-methods
     '''
         Base class
     '''
-    pass
 db = SQLAlchemy(model_class=Base)
 
-class User(db.Model):
+class User(db.Model): # pylint: disable=too-few-public-methods
     '''
         User table
     '''
