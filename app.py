@@ -20,8 +20,8 @@ with app.app_context():
         { 'username': 'moo', 'password': 'moo123' },
         { 'username': 'oink', 'password': 'oink123' }
     ]
-    for user in users:
-        insert_user(user)
+    for new_user in users:
+        insert_user(new_user)
 
 @app.get('/')
 def index():
