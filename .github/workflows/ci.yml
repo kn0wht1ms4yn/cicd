@@ -35,7 +35,7 @@ jobs:
       - name: Static Analysis, Semgrep
         run: |
           pip install semgrep
-          cat >  /tmp/sstu.yml << EOF
+          cat >  /tmp/ssti.yml << EOF
           rules:
             - id: Flask Rule, render_template_string()
               pattern: flask.render_template_string(...)
