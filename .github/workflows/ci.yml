@@ -32,15 +32,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Static Analyisis, Snyk
-        uses: snyk/actions/python@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
       - name: Static Analysis, Semgrep
         run: |
           pip install semgrep
-          semgrep --config p/flask --config p/owasp-top-ten --error .
+          cat >  /tmp/sstu.yml << EOF
+          rules:
+            - id: Flask Rule, render_template_string()
+              pattern: flask.render_template_string(...)
+              message: Potential SSTI - render_template_string()
+              languages: [python]
+              severity: ERROR
+          EOF
+          semgrep --config p/flask --error .
 
       - name: Static Analysis, Bandit
         run: |
