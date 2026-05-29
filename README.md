@@ -3,3 +3,4 @@ This is a simple Flask web application that has been made purposefully vulnerabl
 - SSTI
 - SQLi
 - Command Injection
+- Hardcoded Credentials
